@@ -5,6 +5,11 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nome
 class Livro(models.Model):
+    categoria =models.ForeignKey(
+        Categoria, 
+        on_delete=models.CASCADE,
+        related_name="livros",
+    )
     titulo = models.CharField(max_length=200)
     sinopse = models.TextField(blank=True)
     paginas = models.IntegerField()
